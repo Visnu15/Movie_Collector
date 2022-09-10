@@ -1,0 +1,58 @@
+# creating an empty list
+movies=[]
+
+#defining seperate functions for each operations
+def add_movies():
+  title = input("Enter movie title: ")
+  director = input("Enter director name: ")
+  year = input("Enter release year: ")
+  genre = input("Enter movie's genre: ")
+  movies.append({
+    "Title":title.title(),
+    "Director":director,
+    "Year":year,
+    "Genre":genre
+  })
+
+def list_movies():
+  for movie in movies:
+    print(f"Title: {movie['Title'].title()}")
+    print(f"Director name: {movie['Director'].title()}")
+    print(f"Release year: {movie['Year']}")
+    print(f"Genre: {movie['Genre'].title()}")
+
+
+def find_movies():
+  if len(movies) == 0:
+    print('0 movie in list.')
+    print('Add movies to find one!')
+
+  else:
+    user = input("Enter the movie name you want to search: ")
+    for movie in movies:
+      if user.title() == movie["Title"]:
+        print(f"Title: {movie['Title'].title()}")
+        print(f"Director name: {movie['Director'].title()}")
+        print(f"Release year: {movie['Year']}")
+        print(f"Genre: {movie['Genre'].title()}")
+
+
+
+#main logic of the program where we call every functions we defined above
+def option():
+  print('Welcome to movie collector!')
+  menu = "Press 'a' to add a movie, 'l' to list out the movies, 'f' to find the movie using the title and 'q' to quit: "
+  selection = input(menu)
+  while selection.lower() != "q":
+    if selection.lower() == "a":
+      add_movies()
+    elif selection.lower() == "l":
+        list_movies()
+    elif selection.lower() == "f":
+      find_movies()
+    else:
+      print("Invalid command! Try again.")
+
+    selection = input(menu)
+
+option()
